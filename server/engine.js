@@ -445,7 +445,12 @@ async function runDay(m) {
   scheduleNextDay(m);
 }
 
+// Saving must never crash the match: if the disk is missing, the match keeps running in memory.
 function saveState() {
+  try { writeState(); } catch (e) { console.error('could not save match state:', e.message); }
+}
+
+function writeState() {
   if (!current) return;
   const m = current;
   const data = {
