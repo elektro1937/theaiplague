@@ -363,6 +363,7 @@ async function decideAll(m) {
       if (!d) throw new Error('unparseable reply');
       out[a.id] = { ...d, source: 'model' };
     } catch (e) {
+      console.error(`[${a.name}] fallback: ${e.message}`);
       const d = BRAINS[a.brain](a, m);
       out[a.id] = { ...d, source: 'fallback' };
       m.fallbackNote = `${a.name}: ${e.message}`;
