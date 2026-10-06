@@ -53,4 +53,4 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'content-type': TYPES[path.extname(file)] || 'application/octet-stream' });
     res.end(data);
   });
-}).listen(PORT, () => console.log(`The AI Plague on http://localhost:${PORT} (admin ${ADMIN_TOKEN ? 'enabled' : 'disabled'})`));
+}).listen(PORT, '0.0.0.0', () => console.log(`The AI Plague on http://localhost:${PORT} (admin ${ADMIN_TOKEN ? 'enabled' : 'disabled'})`));
