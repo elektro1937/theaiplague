@@ -1,0 +1,12 @@
+{
+  "name": "the-ai-plague",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The AI Plague: seven AI models compete to wipe out humanity. Live, server-run match.",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

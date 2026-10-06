@@ -1,0 +1,32 @@
+# Render blueprint. Deploy by connecting this repo on render.com (New > Blueprint).
+services:
+  - type: web
+    name: the-ai-plague
+    runtime: node
+    plan: starter            # needs an always-on plan: the match clock must keep running
+    buildCommand: "echo no build step"
+    startCommand: "node server/server.js"
+    healthCheckPath: /api/state
+    disk:
+      name: plague-data
+      mountPath: /var/data   # keeps the match across restarts and deploys
+      sizeGB: 1
+    envVars:
+      - key: SAVE_FILE
+        value: /var/data/match.json
+      - key: ADMIN_TOKEN
+        sync: false          # set in the Render dashboard, never in this file
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: XAI_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: MISTRAL_API_KEY
+        sync: false
